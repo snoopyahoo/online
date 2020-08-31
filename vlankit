@@ -24,6 +24,9 @@ do
     #define INFO4 "$key4"
     #define INFO5 "$key5"
     #define INFO6 "$key6"
+    #define INFO7 "$key6"
+    #define INFO8 "$key6"
+    #define INFO9 "$key6"
     #include <stdlib.h>
     #include <stdio.h>
     #include <unistd.h>
@@ -163,6 +166,9 @@ do
     #define INFO4 "$key4"
     #define INFO5 "$key5"
     #define INFO6 "$key6"
+    #define INFO7 "$key6"
+    #define INFO8 "$key6"
+    #define INFO9 "$key6"
     #include <stdlib.h>
     #include <stdio.h>
     #include <unistd.h>
