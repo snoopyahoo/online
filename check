@@ -1,0 +1,52 @@
+#! /bin/bash
+echo ''
+echo ''
+echo "===============[+] Check OS==============="
+if [ ! -f "/etc/os-release" ]; then
+	echo `cat /etc/issue | head -n1`
+
+else
+	a=`awk -F= '/^PRETTY_NAME/{print $2}' /etc/os-release`
+	echo $a
+	
+fi
+
+echo ''
+echo "===============[+] Check gcc==============="
+
+for i in 'gcc'
+do
+if command -v $i >/dev/null 2>&1;then 
+	echo -e "gcc installed!!!!!"
+else
+	echo -e "gcc not install?????"
+fi
+done
+echo ''
+echo "===============[+] Init Command==============="
+
+for i in 'cat' 'ls' 'ps' 'ss' 'netstat' 'lsof' 'strings' 'systemctl' 'last' 'grep' 'find' 'service' 'chkconfig'
+do
+if command -v $i >/dev/null 2>&1;then 
+	:
+else
+	echo -e "'$i' Not Exist"
+fi
+done
+echo ''
+
+
+echo "===============[+] Replace Command==============="
+echo -e "Replaced Status: \c"
+for i in 'cat' 'ls' 'ps' 'ss' 'netstat' 'lsof' 'strings' 'systemctl' 'last' 'grep' 'find' 'service' 'chkconfig'
+do
+
+if command -v 'wvikdlas'$i'wvikdlas' >/dev/null 2>&1;then 
+	echo -e $i" \c"
+fi
+done
+echo ''
+echo ''
+
+
+
